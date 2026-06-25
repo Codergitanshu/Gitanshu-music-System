@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gitanshu Music Advisor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🎵 Gitanshu Music Advisor</h1>
+    <p>Smart Music Recommendation System</p>
+</header>
+
+<div class="container">
+
+    <select id="mood">
+        <option value="">Select Mood</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="workout">Workout</option>
+    </select>
+
+    <button onclick="recommendSong()">
+        Recommend Music
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+  ---------------------------------------------------------------------
+  body{
+    background:#0d1117;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+}
+
+header{
+    padding:30px;
+    background:linear-gradient(90deg,#00d4ff,#7b2ff7);
+}
+
+.container{
+    width:80%;
+    margin:auto;
+    padding:30px;
+}
+
+select,button{
+    padding:12px;
+    margin:10px;
+    width:250px;
+}
+
+button{
+    background:#00d4ff;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#result{
+    margin-top:30px;
+    font-size:20px;
+}
+
+----------------------------------------------------------------------------------------------
+  const songs = {
+
+happy: [
+"Shape Of You",
+"Good Time",
+"Happy"
+],
+
+sad: [
+"Let Her Go",
+"Photograph",
+"Someone Like You"
+],
+
+workout: [
+"Believer",
+"Stronger",
+"Eye Of The Tiger"
+]
+
+};
+
+function recommendSong(){
+
+let mood =
+document.getElementById("mood").value;
+
+let result =
+document.getElementById("result");
+
+if(mood === ""){
+    result.innerHTML =
+    "Please select a mood!";
+    return;
+}
+
+let randomSong =
+songs[mood][Math.floor(
+Math.random() * songs[mood].length
+)];
+
+result.innerHTML =
+"🎧 Recommended Song: <b>" +
+randomSong +
+"</b>";
+
+}
